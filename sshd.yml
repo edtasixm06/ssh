@@ -24,6 +24,7 @@ services:
       - ldapnet
   host1:
     image: edtasixm06/hostpam:18auth
+    entrypoint: /usr/bin/vi
     deploy:
       replicas: 1
     networks:
