@@ -24,5 +24,5 @@ cp /opt/docker/ldap.conf /etc/openldap/ldap.conf
 cp /opt/docker/nsswitch.conf /etc/nsswitch.conf
 
 /usr/bin/ssh-keygen -A
-/usr/sbin/sshd -D
+#/usr/sbin/sshd -D
 

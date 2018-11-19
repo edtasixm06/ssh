@@ -1,0 +1,32 @@
+version: "3"
+services:
+  ldap:
+    image: edtasixm06/ldapserver:18group
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "389:389"
+    networks:
+      - ldapnet
+  sshd:
+    image: edtasixm06/sshserver:18base
+    deploy:
+      replicas: 1
+    ports: 
+      - "22:2022"
+    networks:
+      - ldapnet
+  host1:
+    image: edtasixm06/hostpam:18auth
+    deploy:
+      replicas: 1
+    networks:
+      - ldapnet
+networks:
+  ldapnet:
